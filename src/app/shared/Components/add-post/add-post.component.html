@@ -1,0 +1,61 @@
+<div class="bg-neutral-700/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl">
+  <div class="flex items-center gap-4">
+    <div class="border-2 border-main-400 rounded-full p-0.5 shadow-[0_0_15px_rgba(255,215,0,0.6)]">
+      <img [src]="userData.photo" alt="" class="w-10 rounded-full" />
+    </div>
+    <div class="flex flex-col">
+      <p
+        class="text-md font-extrabold text-transparent bg-clip-text bg-linear-to-r from-main-300 to-main-500 tracking-widest uppercase"
+      >
+        {{ userData.name }}
+      </p>
+      <p class="text-neutral-500 text-[10px] font-bold tracking-wider">{{ userData.username }}</p>
+    </div>
+  </div>
+  <form [formGroup]="postForm">
+    <div class="px-10">
+      <textarea
+        formControlName="body"
+        name="post"
+        id="post"
+        class="w-full my-3 border-b resize-none text-main-100 placeholder:text-main-100/50 py-2 bg-transparent focus:outline-none"
+        rows="5"
+        placeholder="What's on your mind?"
+      ></textarea>
+    </div>
+    <div id="imagePreviewer" class="w-full p-10 h-full">
+      @if (mediaPreview()) {
+        <img [src]="mediaPreview()" alt="" class="w-full rounded-2xl h-full object-cover" />
+      }
+    </div>
+    <div class="px-10 flex justify-between items-center">
+      <div class="flex gap-8">
+        <input type="file" (change)="onFileSelected($event)" hidden #fileInput />
+        <i
+          (click)="fileInput.click()"
+          class="pi pi-image text-2xl! cursor-pointer hover:text-main-400 transition-colors text-main-500"
+        ></i>
+        <i
+          (click)="fileInput.click()"
+          class="pi pi-video text-2xl! cursor-pointer hover:text-main-400 transition-colors text-main-500"
+        ></i>
+        <i
+          (click)="fileInput.click()"
+          class="pi pi-file text-2xl! cursor-pointer hover:text-main-400 transition-colors text-main-500"
+        ></i>
+      </div>
+      <button
+        [disabled]="isLoading()"
+        (click)="createPost()"
+        class="px-6 py-3 cursor-pointer rounded-full border border-white/10 bg-white/5 text-main-400 hover:text-main-500 hover:border-white/20 hover:bg-main-500/10 transition-all duration-300"
+      >
+        @if (isLoading()) {
+          <app-loading-spinner />
+        } @else {
+          Share your thoughts...
+        }
+      </button>
+    </div>
+  </form>
+</div>
+<app-toast />

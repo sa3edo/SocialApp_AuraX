@@ -1,0 +1,35 @@
+<app-add-post (createdPost)="addPost($event)" class="block w-full mb-6" />
+@for (post of allPosts(); track post._id) {
+  <app-post-card [post]="post" />
+} @empty {
+  @if (!isLoading()) {
+    <div
+      class="flex justify-center items-center h-[200px] text-neutral-500 font-bold tracking-widest uppercase"
+    >
+      <p>No posts found in the void.</p>
+    </div>
+  }
+}
+
+@if (isLoading() && allPosts().length === 0) {
+  <app-post-skeleton />
+  <div class="flex justify-center items-center h-[100px] gap-2">
+    <p class="text-main-500 font-bold text-lg tracking-wider">Loading posts...</p>
+    <app-loading-spinner />
+  </div>
+}
+
+@if (isLoading() && allPosts().length > 0) {
+  <div class="flex justify-center items-center h-[100px] gap-2">
+    <p class="text-main-500 font-bold text-lg tracking-wider">Loading posts...</p>
+    <app-loading-spinner />
+  </div>
+}
+
+<div
+  class="search-results h-4"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+></div>

@@ -1,0 +1,101 @@
+<div id="suggestedFrends" class="">
+  <div
+    class="bg-neutral-700/30 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl sticky top-6"
+  >
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-xs font-extrabold uppercase tracking-widest text-neutral-400">
+        Suggested Connections
+      </h2>
+      <button
+        class="text-[10px] font-bold uppercase tracking-wider text-main-500 hover:text-main-400 transition-colors"
+      >
+        See All
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      @for (suggestion of suggestions(); track suggestion._id) {
+        <div class="flex items-center justify-between group cursor-pointer">
+          <div class="flex items-center gap-3">
+            <div
+              class="relative w-10 h-10 rounded-full border-2 {{
+                getBorderColor($index)
+              }} p-[2px] shadow-glow-gold transition-transform group-hover:scale-105"
+            >
+              <img
+                src="{{ suggestion.photo }}"
+                class="w-full h-full rounded-full object-cover"
+                alt="User"
+              />
+            </div>
+            <div class="flex flex-col">
+              <p
+                class="text-xs font-bold text-neutral-200 group-hover:text-main-400 transition-colors"
+              >
+                {{ suggestion.name }}
+              </p>
+              <p class="text-[10px] font-medium text-neutral-500">{{ suggestion.username }}</p>
+            </div>
+          </div>
+          <button
+            class="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-wider text-neutral-300 hover:bg-main-500 hover:text-neutral-900 hover:border-main-500 hover:shadow-glow-gold transition-all duration-300"
+          >
+            Connect
+          </button>
+        </div>
+      }
+
+      <!-- <div class="flex items-center justify-between group cursor-pointer">
+        <div class="flex items-center gap-3">
+          <div
+            class="relative w-10 h-10 rounded-full border-2 border-secondary-500 p-[2px] shadow-glow-cyan transition-transform group-hover:scale-105"
+          >
+            <img
+              src="https://i.pravatar.cc/150?img=32"
+              class="w-full h-full rounded-full object-cover"
+              alt="User"
+            />
+          </div>
+          <div class="flex flex-col">
+            <p
+              class="text-xs font-bold text-neutral-200 group-hover:text-secondary-400 transition-colors"
+            >
+              Sarah Connor
+            </p>
+            <p class="text-[10px] font-medium text-neutral-500">@sarah.ux</p>
+          </div>
+        </div>
+        <button
+          class="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-wider text-neutral-300 hover:bg-secondary-500 hover:text-neutral-900 hover:border-secondary-500 hover:shadow-glow-cyan transition-all duration-300"
+        >
+          Connect
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between group cursor-pointer">
+        <div class="flex items-center gap-3">
+          <div
+            class="relative w-10 h-10 rounded-full border border-tertiary-500 p-[2px] transition-transform group-hover:scale-105"
+          >
+            <div
+              class="w-full h-full rounded-full bg-neutral-700 flex items-center justify-center text-xs font-bold text-neutral-400"
+            >
+              MO
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-xs font-bold text-neutral-200 group-hover:text-white transition-colors">
+              Mahmoud Omar
+            </p>
+            <p class="text-[10px] font-medium text-neutral-500">@m.omar</p>
+          </div>
+        </div>
+        <button
+          class="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-wider text-neutral-300 hover:bg-white hover:text-neutral-900 hover:border-white transition-all duration-300"
+        >
+          Connect
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>

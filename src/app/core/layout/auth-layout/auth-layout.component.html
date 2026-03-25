@@ -1,0 +1,19 @@
+<div class="min-h-screen overflow-hidden flex flex-col">
+  <app-navbar />
+
+  <main class="px-4  flex-1 py-6 md:px-20 relative">
+    <router-outlet />
+    <div
+      class="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 size-[420px] rounded-full bg-secondary-500/20 blur-3xl transition-colors"
+    ></div>
+    <div
+      class="pointer-events-none absolute  -bottom-40 left-[-40px] size-[380px] rounded-full bg-main-800/35 blur-3xl transition-colors"
+    ></div>
+    <div
+      class="pointer-events-none absolute -bottom-40 right-[-40px] size-[380px] rounded-full bg-main-800/35 blur-3xl transition-colors"
+    ></div>
+  </main>
+  <div class="">
+    <app-footer />
+  </div>
+</div>

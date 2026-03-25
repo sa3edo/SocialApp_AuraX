@@ -1,0 +1,76 @@
+<article
+  class="bg-[#121212]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-5 shadow-2xl flex flex-col gap-4 mb-6 transition-all duration-300 hover:border-main-800 hover:bg-[#151515]"
+>
+  <div class="flex justify-between items-center">
+    <div class="flex items-center gap-3 cursor-pointer group">
+      <img
+        src="/images/Avatar/SuperSayajin.jpeg"
+        alt=""
+        class="w-10 h-10 rounded-full object-cover border border-white/10 group-hover:border-main-500 transition-colors"
+      />
+      <div class="flex flex-col">
+        <h4
+          class="text-[15px] font-bold text-neutral-100 group-hover:text-main-400 transition-colors"
+        >
+          {{ post()?.user?.name }}
+        </h4>
+        <div
+          class="text-[10px] font-extrabold uppercase tracking-widest text-neutral-500 flex items-center gap-1.5 mt-0.5"
+        >
+          <span>{{ post()?.createdAt | date: 'short' }}</span>
+          <span class="w-1 h-1 rounded-full bg-neutral-600"></span>
+          <span class="text-neutral-400">Obsidian Premier</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="text-neutral-500 hover:text-neutral-300 transition-colors p-2">
+      <i class="pi pi-ellipsis-h text-lg"></i>
+    </button>
+  </div>
+  <p class="text-[14px] leading-relaxed text-neutral-300 mt-2 font-medium">
+    {{ post()?.body }}
+  </p>
+
+  <div class="w-full rounded-2xl overflow-hidden mt-2 cursor-pointer">
+    @if (post()?.image) {
+      <img
+        [src]="post()?.image"
+        alt="Post Media"
+        class="w-full h-auto object-cover transition-transform duration-700"
+      />
+    }
+  </div>
+
+  <div class="flex justify-between items-center pt-3 mt-1">
+    <div class="flex items-center gap-6">
+      <button
+        class="flex items-center gap-2 text-neutral-500 hover:text-main-500 transition-colors group"
+      >
+        <i class="pi pi-heart text-xl group-hover:scale-110 transition-transform"></i>
+        <span class="text-xs font-bold">{{ post()?.likesCount }}</span>
+      </button>
+
+      <button
+        class="flex items-center gap-2 text-neutral-500 hover:text-secondary-400 transition-colors group"
+      >
+        <i class="pi pi-comment text-xl group-hover:scale-110 transition-transform"></i>
+        <span class="text-xs font-bold">{{ post()?.commentsCount }}</span>
+      </button>
+
+      <button
+        class="flex items-center gap-2 text-neutral-500 hover:text-neutral-200 transition-colors group"
+      >
+        <i class="pi pi-share-alt text-xl group-hover:scale-110 transition-transform"></i>
+        <span class="text-xs font-bold">{{ post()?.sharesCount }}</span>
+      </button>
+    </div>
+
+    <button
+      class="text-neutral-500 hover:text-main-400 transition-colors group"
+      [class.text-main-500]="true"
+    >
+      <i class="pi pi-bookmark-fill text-xl group-hover:scale-110 transition-transform"></i>
+    </button>
+  </div>
+</article>
