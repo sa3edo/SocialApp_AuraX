@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { IAllPostsResponse } from '../interface/IAllPostsResponse';
 import { appAPIs } from '../../../core/constants/appAPIs';
 import { ICreatePostResponse, Post } from '../interface/ICreatePostResponse';
+import { IGetLikesResponse } from '../interface/IGetLikesResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,9 @@ export class PostService {
 
   createPost(data: FormData) {
     return this.http.post<ICreatePostResponse>(appAPIs.createPost, data);
+  }
+
+  getPostLikes(postId: string) {
+    return this.http.get<IGetLikesResponse>(appAPIs.getPostLikes(postId));
   }
 }

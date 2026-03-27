@@ -15,6 +15,7 @@
           "type": "service"
         },
         "@schematics/angular:guard": {
+          "name": "guard",
           "skipTests": true
         },
         "@schematics/angular:pipe": {
@@ -23,6 +24,10 @@
         "@schematics/angular:directive": {
           "skipTests": true,
           "type": "directives"
+        },
+        "@schematics/angular:interceptor": {
+          "name": "interceptor",
+          "skipTests": true
         }
       },
       "root": "",

@@ -15,4 +15,5 @@ export const appAPIs = {
     // Posts
     getAllPosts: `${environment.baseUrl}/posts`,
     createPost: `${environment.baseUrl}/posts`,
+    getPostLikes: (postId: string) => `${environment.baseUrl}/posts/${postId}/likes`,
 }

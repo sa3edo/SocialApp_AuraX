@@ -1,0 +1,20 @@
+#scrollableDiv::-webkit-scrollbar {
+    width: 10px;
+    background-color: #181818;
+    border-radius: 10px;
+    transition: all 0.6s;
+}
+
+#scrollableDiv::-webkit-scrollbar-thumb {
+    background-color: var(--color-main-500);
+    border-radius: 10px;
+    border: 2px solid var(--color-main-900);
+    transition: all 0.6s;
+}
+
+#scrollableDiv::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-main-800);
+    border-radius: 10px;
+    border: 2px solid var(--color-main-900);
+    transition: all 0.6s;
+}

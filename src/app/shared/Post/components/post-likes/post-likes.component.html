@@ -1,0 +1,73 @@
+<div class="card flex justify-center">
+  <p-dialog
+    [visible]="true"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '30rem' }"
+    [breakpoints]="{ '1199px': '50vw', '575px': '95vw' }"
+    styleClass="bg-neutral-800! border border-neutral-800! backdrop-blur-xl   rounded-3xl shadow-2xl"
+  >
+    <ng-template pTemplate="header">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-full bg-main-500/10 flex items-center justify-center text-main-500"
+        >
+          <i class="pi pi-heart-fill text-sm"></i>
+        </div>
+        <h2 class="text-lg font-extrabold text-neutral-100 tracking-widest uppercase">Reactions</h2>
+        <span
+          class="px-2.5 py-0.5 rounded-full bg-neutral-800 text-neutral-400 text-[10px] font-black"
+        >
+          44
+        </span>
+      </div>
+    </ng-template>
+
+    <div id="scrollableDiv" class="flex flex-col gap-3 mt-2 pr-1 max-h-[60vh] overflow-y-auto">
+      <!-- @for (like of likes(); track like._id) { -->
+      <div
+        class="flex items-center justify-between p-3 bg-neutral-900 border border-white/5 rounded-2xl hover:border-main-500/30 hover:bg-[#1a1a1a] transition-all group cursor-pointer"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="relative w-12 h-12 rounded-full border border-neutral-200/10 p-[2px] group-hover:border-main-500 transition-colors duration-300"
+          >
+            <img
+              [src]="'/images/Avatar/SuperSayajin.jpeg'"
+              [alt]="'name'"
+              class="w-full h-full rounded-full object-cover"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <h4
+              class="text-sm font-bold text-neutral-200 group-hover:text-main-400 transition-colors"
+            >
+              name
+            </h4>
+            <p class="text-[11px] font-medium text-neutral-500">&#64;username</p>
+
+            <div class="flex items-center gap-1 mt-1 text-[10px] text-neutral-400">
+              <i class="pi pi-users text-[9px]"></i>
+              <span class="font-bold">44 Followers</span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="px-4 py-1.5 rounded-full border border-neutral-300 cursor-pointer bg-neutral-300/5 text-[10px] font-bold uppercase tracking-wider text-neutral-300 hover:bg-main-500 hover:text-neutral-900 hover:border-main-500 transition-all duration-300"
+        >
+          View Profile
+        </button>
+      </div>
+
+      <!-- } @empty {
+        <div class="flex flex-col items-center justify-center py-10 text-neutral-500">
+          <i class="pi pi-heart text-4xl mb-3 opacity-20"></i>
+          <p class="font-bold tracking-widest uppercase text-xs">No reactions yet</p>
+        </div>
+      } -->
+    </div>
+  </p-dialog>
+</div>

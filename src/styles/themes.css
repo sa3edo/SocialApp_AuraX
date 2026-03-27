@@ -1,67 +1,71 @@
 @theme {
-    --color-main-900: #4d4100;
-    --color-main-800: #806c00;
-    --color-main-700: #b39600;
-    --color-main-600: #e6c200;
-    --color-main-500: #ffd700;
-    /* Base */
-    --color-main-400: #ffdf33;
-    --color-main-300: #ffe766;
-    --color-main-200: #ffef99;
-    --color-main-100: #fff7cc;
-    --color-main-50: #fffbe5;
 
-    /* --- Secondary (SSJ Blue: #00FFFF) --- */
-    --color-secondary-900: #004d4d;
-    --color-secondary-800: #008080;
-    --color-secondary-700: #00b3b3;
-    --color-secondary-600: #00e6e6;
-    --color-secondary-500: #00ffff;
-    /* Base */
-    --color-secondary-400: #33ffff;
-    --color-secondary-300: #66ffff;
-    --color-secondary-200: #99ffff;
-    --color-secondary-100: #ccffff;
-    --color-secondary-50: #e5ffff;
 
-    /* --- Tertiary (Magenta: #FF00FF) --- */
-    --color-tertiary-900: #4d004d;
-    --color-tertiary-800: #800080;
-    --color-tertiary-700: #b300b3;
-    --color-tertiary-600: #e600e6;
-    --color-tertiary-500: #ff00ff;
-    /* Base */
-    --color-tertiary-400: #ff33ff;
-    --color-tertiary-300: #ff66ff;
-    --color-tertiary-200: #ff99ff;
-    --color-tertiary-100: #ffccff;
-    --color-tertiary-50: #ffe5ff;
+        --color-main-900: #4d4100;
+        --color-main-800: #806c00;
+        --color-main-700: #b39600;
+        --color-main-600: #e6c200;
+        --color-main-500: #ffd700;
+        /* Base */
+        --color-main-400: #ffdf33;
+        --color-main-300: #ffe766;
+        --color-main-200: #ffef99;
+        --color-main-100: #fff7cc;
+        --color-main-50: #fffbe5;
 
-    /* --- Neutral (Obsidian Dark: #0A0A0A) --- */
-    --color-neutral-900: #0a0a0a;
-    /* Base */
-    --color-neutral-800: #171717;
-    --color-neutral-700: #262626;
-    --color-neutral-600: #404040;
-    --color-neutral-500: #737373;
-    --color-neutral-400: #a3a3a3;
-    --color-neutral-300: #d4d4d4;
-    --color-neutral-200: #e5e5e5;
-    --color-neutral-100: #f5f5f5;
-    --color-neutral-50: #fafafa;
+        /* --- Secondary (SSJ Blue: #00FFFF) --- */
+        --color-secondary-900: #004d4d;
+        --color-secondary-800: #008080;
+        --color-secondary-700: #00b3b3;
+        --color-secondary-600: #00e6e6;
+        --color-secondary-500: #00ffff;
+        /* Base */
+        --color-secondary-400: #33ffff;
+        --color-secondary-300: #66ffff;
+        --color-secondary-200: #99ffff;
+        --color-secondary-100: #ccffff;
+        --color-secondary-50: #e5ffff;
 
-    /* --- 1. Gradient Tokens --- */
+        /* --- Tertiary (Magenta: #FF00FF) --- */
+        --color-tertiary-900: #4d004d;
+        --color-tertiary-800: #800080;
+        --color-tertiary-700: #b300b3;
+        --color-tertiary-600: #e600e6;
+        --color-tertiary-500: #ff00ff;
+        /* Base */
+        --color-tertiary-400: #ff33ff;
+        --color-tertiary-300: #ff66ff;
+        --color-tertiary-200: #ff99ff;
+        --color-tertiary-100: #ffccff;
+        --color-tertiary-50: #ffe5ff;
 
-    --image-aura-flare: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    --image-cyan-pulse: linear-gradient(90deg, #00FFFF 0%, #00BFFF 100%);
-    --image-celestial-shadow: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, rgba(13, 13, 13, 1) 100%);
+        /* --- Neutral (Obsidian Dark: #0A0A0A) --- */
+        --color-neutral-900: #0a0a0a;
+        /* Base */
+        --color-neutral-800: #171717;
+        --color-neutral-700: #262626;
+        --color-neutral-600: #404040;
+        --color-neutral-500: #737373;
+        --color-neutral-400: #a3a3a3;
+        --color-neutral-300: #d4d4d4;
+        --color-neutral-200: #e5e5e5;
+        --color-neutral-100: #f5f5f5;
+        --color-neutral-50: #fafafa;
 
-    /* --- 2. Glow Effects (Shadows) --- */
+        /* --- 1. Gradient Tokens --- */
 
-    --shadow-glow-gold: 0 0 20px rgba(255, 215, 0, 0.4);
-    --shadow-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
+        --image-aura-flare: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        --image-cyan-pulse: linear-gradient(90deg, #00FFFF 0%, #00BFFF 100%);
+        --image-celestial-shadow: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, rgba(13, 13, 13, 1) 100%);
 
-    /* --- 3. Border Tokens --- */
-    --border-glow-gold: 1px solid rgba(255, 215, 0, 0.3);
-    --border-glow-cyan: 1px solid rgba(0, 255, 255, 0.3);
+        /* --- 2. Glow Effects (Shadows) --- */
+
+        --shadow-glow-gold: 0 0 20px rgba(255, 215, 0, 0.4);
+        --shadow-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
+
+        /* --- 3. Border Tokens --- */
+        --border-glow-gold: 1px solid rgba(255, 215, 0, 0.3);
+        --border-glow-cyan: 1px solid rgba(0, 255, 255, 0.3);
+
+    
 }

@@ -7,10 +7,11 @@ import { LoadingSpinnerComponent } from "../../../shared/Components/loading-spin
 import { PostSkeletonComponent } from "../../../shared/Components/post-skeleton/post-skeleton.component";
 import { AddPostComponent } from "../../../shared/Components/add-post/add-post.component";
 import { STORED_KEYS } from '../../../core/constants/storedKeys';
+import { PostLikesComponent } from "../../../shared/Post/components/post-likes/post-likes.component";
 
 @Component({
   selector: 'app-feed',
-  imports: [PostCardComponent, InfiniteScrollDirective, LoadingSpinnerComponent, PostSkeletonComponent, AddPostComponent],
+  imports: [PostCardComponent, InfiniteScrollDirective, LoadingSpinnerComponent, PostSkeletonComponent, AddPostComponent, PostLikesComponent],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css',
 })
