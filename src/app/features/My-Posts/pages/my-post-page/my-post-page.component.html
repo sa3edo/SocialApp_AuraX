@@ -1,0 +1,3 @@
+@for (post of myPosts(); track post._id && post.createdAt) {
+  <app-post-card [post]="post" />
+}

@@ -11,7 +11,7 @@ import { PostLikesComponent } from "../../../shared/Post/components/post-likes/p
 
 @Component({
   selector: 'app-feed',
-  imports: [PostCardComponent, InfiniteScrollDirective, LoadingSpinnerComponent, PostSkeletonComponent, AddPostComponent, PostLikesComponent],
+  imports: [PostCardComponent, InfiniteScrollDirective, LoadingSpinnerComponent, PostSkeletonComponent],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css',
 })

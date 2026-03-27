@@ -1,0 +1,5 @@
+@reference "../../../../styles.css";
+
+.active {
+    @apply border-main-500 text-main-400 bg-main-500/10 border-l-[3px] font-extrabold;
+}

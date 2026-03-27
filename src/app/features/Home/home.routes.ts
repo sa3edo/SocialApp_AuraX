@@ -14,7 +14,15 @@ export const HOME_ROUTES: Routes = [
         children: [
             {
                 path: 'Trending',
-                loadChildren: () => import('../Feeds/feeds.routes').then(m => m.FEEDS_ROUTES),
+                loadComponent() {
+                    return import('../Feeds/feed/feed.component').then(m => m.FeedComponent);
+                },
+            },
+            {
+                path: 'My-Posts',
+                loadComponent() {
+                    return import('../My-Posts/pages/my-post-page/my-post-page.component').then(m => m.MyPostPageComponent);
+                },
             }
         ]
     }

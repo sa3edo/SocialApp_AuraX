@@ -19,8 +19,10 @@
     <ul class="flex flex-col space-y-1">
       <li>
         <a
-          href="#"
-          class="flex items-center gap-4 pl-8 pr-4 py-3.5 bg-main-500/10 border-l-[3px] border-main-500 text-main-400 font-extrabold uppercase tracking-widest text-xs rounded-r-2xl mr-4 transition-colors"
+          routerLink="/home/Trending"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center gap-4 pl-8 pr-4 py-3.5 font-bold uppercase tracking-widest text-xs rounded-r-2xl mr-4 transition-colors hover:text-secondary-800   border-l-[3px] border-transparent text-neutral-400 hover:bg-neutral-50/5 duration-300"
         >
           <i class="pi pi-chart-line text-lg"></i>
           <span>Trending</span>
@@ -29,7 +31,9 @@
 
       <li>
         <a
-          href="#"
+          routerLink="/home/My-Posts"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           class="flex items-center gap-4 hover:text-secondary-800 pl-8 pr-4 py-3.5 border-l-[3px] border-transparent text-neutral-400 hover:bg-neutral-50/5 font-bold uppercase tracking-widest text-xs rounded-r-2xl mr-4 transition-all duration-300"
         >
           <i class="pi pi-globe text-lg"></i>
@@ -39,7 +43,9 @@
 
       <li>
         <a
+          routerLink="/home/Community"
           href="#"
+          routerLinkActive="active"
           class="flex items-center gap-4 pl-8 pr-4 py-3.5 border-l-[3px] border-transparent text-neutral-400 hover:text-secondary-800 hover:bg-neutral-50/5 font-bold uppercase tracking-widest text-xs rounded-r-2xl mr-4 transition-all duration-300"
         >
           <i class="pi pi-users text-lg"></i>
@@ -49,6 +55,7 @@
 
       <li>
         <a
+          routerLink="/home/Saved"
           href="#"
           class="flex items-center gap-4 pl-8 pr-4 py-3.5 border-l-[3px] border-transparent text-neutral-400 hover:text-secondary-800 hover:bg-neutral-50/5 font-bold uppercase tracking-widest text-xs rounded-r-2xl mr-4 transition-all duration-300"
         >

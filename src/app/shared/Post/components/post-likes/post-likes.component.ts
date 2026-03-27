@@ -1,37 +1,54 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, OnInit, signal, untracked } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ModalService } from '../../../../core/services/modal.service';
 import { PostService } from '../../services/post.service';
 import { IGetLikesResponse, Like } from '../../interface/IGetLikesResponse';
+import { LoadingSpinnerComponent } from "../../../Components/loading-spinner/loading-spinner.component";
+import { ListSkeletonComponent } from "../../../Components/list-skeleton/list-skeleton.component";
 
 @Component({
   selector: 'app-post-likes',
-  imports: [ButtonModule, DialogModule],
+  imports: [ButtonModule, DialogModule, LoadingSpinnerComponent, ListSkeletonComponent],
   templateUrl: './post-likes.component.html',
   styleUrl: './post-likes.component.css',
 })
-export class PostLikesComponent implements OnInit {
+export class PostLikesComponent {
 
   // inject services
   readonly modalService = inject(ModalService);
   private readonly postService = inject(PostService);
 
+  listen = effect(() => {
+    if (this.modalService.showDialog()) {
+      console.log("effect show");
+      untracked(() => {
+        this.getLikes(this.modalService.postId()!);
+      })
+    } else {
+      untracked(() => {
+        this.likes.set([]);
+      })
+    }
+  })
 
   // signals
   likes = signal<Like[]>([]);
   totalLikesCount = signal<number>(0);
-  ngOnInit(): void {
+  isLoading = signal<boolean>(false);
 
-  }
+
   getLikes(id: string) {
+    this.isLoading.set(true);
     this.postService.getPostLikes(id).subscribe({
       next: (response: IGetLikesResponse) => {
         console.log(response);
         this.likes.set(response.data.likes);
         this.totalLikesCount.set(response.meta.pagination.total);
+        this.isLoading.set(false);
       },
       error: (err) => {
+        this.isLoading.set(false);
         console.log(err);
       }
     })
