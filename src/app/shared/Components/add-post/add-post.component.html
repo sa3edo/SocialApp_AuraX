@@ -1,6 +1,6 @@
-<div class="bg-neutral-700/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl">
+<div class="bg-neutral-900/30 mb-2 border border-neutral-700/50 rounded-3xl p-6 shadow-2xl">
   <div class="flex items-center gap-4">
-    <div class="border-2 border-main-400 rounded-full p-0.5 shadow-[0_0_15px_rgba(255,215,0,0.6)]">
+    <div class="border-2 border-main-400 rounded-full p-0.5 shadow-[0_0_10px_rgba(255,215,0,0.25)]">
       <img [src]="userData.photo" alt="" class="w-10 rounded-full" />
     </div>
     <div class="flex flex-col">
@@ -9,23 +9,27 @@
       >
         {{ userData.name }}
       </p>
-      <p class="text-neutral-500 text-[10px] font-bold tracking-wider">{{ userData.username }}</p>
+      <p class="text-neutral-400 text-[10px] font-bold tracking-wider">{{ userData.username }}</p>
     </div>
   </div>
   <form [formGroup]="postForm">
-    <div class="px-10">
+    <div class="px-10 mt-2">
       <textarea
         formControlName="body"
         name="post"
         id="post"
-        class="w-full my-3 border-b resize-none text-main-100 placeholder:text-main-100/50 py-2 bg-transparent focus:outline-none"
+        class="w-full my-3 border-b border-neutral-400 resize-none text-neutral-200 placeholder:text-neutral-400 py-2 bg-transparent focus:outline-none focus:border-main-500 transition-colors"
         rows="5"
         placeholder="What's on your mind?"
       ></textarea>
     </div>
     <div id="imagePreviewer" class="w-full p-10 h-full">
       @if (mediaPreview()) {
-        <img [src]="mediaPreview()" alt="" class="w-full rounded-2xl h-full object-cover" />
+        <img
+          [src]="mediaPreview()"
+          alt=""
+          class="w-full rounded-2xl h-full object-cover border border-neutral-700/50"
+        />
       }
     </div>
     <div class="px-10 flex justify-between items-center">
@@ -33,15 +37,15 @@
         <input type="file" (change)="onFileSelected($event)" hidden #fileInput />
         <i
           (click)="fileInput.click()"
-          class="pi pi-image text-2xl! cursor-pointer hover:text-main-400 transition-colors text-main-500"
+          class="pi pi-image text-2xl! cursor-pointer text-neutral-500 hover:text-main-400 transition-colors"
         ></i>
         <i
           (click)="fileInput.click()"
-          class="pi pi-video text-2xl! cursor-pointer hover:text-main-400 transition-colors text-main-500"
+          class="pi pi-video text-2xl! cursor-pointer text-neutral-500 hover:text-main-400 transition-colors"
         ></i>
         <i
           (click)="fileInput.click()"
-          class="pi pi-file text-2xl! cursor-pointer hover:text-main-400 transition-colors text-main-500"
+          class="pi pi-file text-2xl! cursor-pointer text-neutral-500 hover:text-main-400 transition-colors"
         ></i>
       </div>
       <button
@@ -49,7 +53,7 @@
           (postForm.get('body')?.invalid && postForm.get('image')?.invalid) || isLoading()
         "
         (click)="createPost()"
-        class="px-6 py-3 rounded-full border border-white/10 bg-main-500 text-neutral-900 transition-all duration-300 disabled:opacity-50 disabled:cursor-auto disabled:shadow-none hover:text-neutral-900   hover:border-main-700 hover:shadow-glow-gold   font-bold disabled:hover:text-neutral-900 disabled:hover:border-white/10 cursor-pointer"
+        class="px-6 py-3 rounded-full border border-neutral-700/50 bg-main-500 text-neutral-900 transition-all duration-300 disabled:opacity-50 disabled:cursor-auto disabled:shadow-none hover:bg-main-400 hover:text-neutral-950 hover:shadow-glow-gold font-bold cursor-pointer"
       >
         @if (isLoading()) {
           <div class="flex items-center gap-2">
