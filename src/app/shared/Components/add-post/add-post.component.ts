@@ -72,11 +72,26 @@ export class AddPostComponent implements OnInit {
       this.postForm.get('image')?.setValue(file)
     }
   }
+  // handleAfterCreatePost(message: string, post: Post) {
+  //   this.isLoading.set(false)
+  //   this.postForm.reset();
+  //   this.createdPost.emit({ ...post, user: this.userData })
+  //   this.toastService.showSuccess(message)
+  //   this.mediaPreview.set(null)
+  // }
+
   handleAfterCreatePost(message: string, post: Post) {
-    this.isLoading.set(false)
+    this.isLoading.set(false);
     this.postForm.reset();
-    this.createdPost.emit({ ...post, user: this.userData })
-    this.toastService.showSuccess(message)
-    this.mediaPreview.set(null)
+    this.mediaPreview.set(null);
+
+    // 1. Create the new post object
+    const newPost = { ...post, user: this.userData };
+
+    // 2. Update the signal (this will automatically update the UI)
+    this.postService.addedPost.set(newPost);
+
+    // 3. Show toast
+    this.toastService.showSuccess(message);
   }
 }

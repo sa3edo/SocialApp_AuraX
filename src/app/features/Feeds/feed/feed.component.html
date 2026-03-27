@@ -1,5 +1,5 @@
-<app-add-post (createdPost)="addPost($event)" class="block w-full mb-6" />
-@for (post of allPosts(); track post._id) {
+<!-- <app-add-post (createdPost)="addPost($event)" class="block w-full mb-6" /> -->
+@for (post of allPosts(); track post._id + post.createdAt) {
   <app-post-card [post]="post" />
 } @empty {
   @if (!isLoading()) {

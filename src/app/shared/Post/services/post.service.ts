@@ -10,7 +10,7 @@ import { ICreatePostResponse, Post } from '../interface/ICreatePostResponse';
 export class PostService {
   private readonly http = inject(HttpClient);
 
-
+  addedPost = signal<any>(null);
   getAllPosts(pagenumber: number = 1) {
     return this.http.get<IAllPostsResponse>(`${appAPIs.getAllPosts}?limit=10&page=${pagenumber}`);
   }

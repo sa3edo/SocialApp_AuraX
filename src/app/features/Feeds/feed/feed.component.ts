@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal, untracked } from '@angular/core';
 import { PostCardComponent } from "../../../shared/Post/components/post-card/post-card.component";
 import { PostService } from '../../../shared/Post/services/post.service';
 import { IAllPostsResponse, Post } from '../../../shared/Post/interface/IAllPostsResponse';
@@ -23,6 +23,17 @@ export class FeedComponent implements OnInit {
   allPosts = signal<Post[]>([]);
   isLoading = signal<boolean>(false);
 
+  constructor() {
+    effect(() => {
+      const addedPost = this.postService.addedPost();
+      if (addedPost) {
+        console.log("effected");
+        untracked(() => {
+          this.allPosts().unshift(addedPost);
+        });
+      }
+    });
+  }
   ngOnInit(): void {
     this.getAllPosts();
   }
