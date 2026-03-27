@@ -1,5 +1,5 @@
 import { ToastService } from './../toast/toast.service';
-import { Component, EventEmitter, inject, output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, output, signal, OnInit } from '@angular/core';
 import { PostService } from '../../Post/services/post.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ICreatePostResponse, Post } from '../../Post/interface/ICreatePostResponse';
@@ -13,12 +13,15 @@ import { STORED_KEYS } from '../../../core/constants/storedKeys';
   templateUrl: './add-post.component.html',
   styleUrl: './add-post.component.css',
 })
-export class AddPostComponent {
+export class AddPostComponent implements OnInit {
 
   // Get user data from local storage
   userData = JSON.parse(localStorage.getItem(STORED_KEYS.userData) || "{}")
 
-
+  ngOnInit(): void {
+    console.log(this.isLoading());
+    console.log(this.postForm.invalid);
+  }
   // Inject services
   private readonly postService = inject(PostService);
   private readonly toastService = inject(ToastService);
@@ -33,6 +36,7 @@ export class AddPostComponent {
     image: new FormControl('', Validators.required),
   });
   createPost() {
+
     this.isLoading.set(true)
     const formData = new FormData();
     this.appendValues(formData)
@@ -71,7 +75,7 @@ export class AddPostComponent {
   handleAfterCreatePost(message: string, post: Post) {
     this.isLoading.set(false)
     this.postForm.reset();
-    this.createdPost.emit({...post, user: this.userData})
+    this.createdPost.emit({ ...post, user: this.userData })
     this.toastService.showSuccess(message)
     this.mediaPreview.set(null)
   }

@@ -37,6 +37,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "express": "^5.1.0",
     "ngx-infinite-scroll": "^21.0.0",
+    "ngx-progressbar": "^14.0.0",
     "postcss": "^8.5.8",
     "primeicons": "^7.0.0",
     "primeng": "^20.4.0",

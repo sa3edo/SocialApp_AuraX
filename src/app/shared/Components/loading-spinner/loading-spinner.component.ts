@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './loading-spinner.component.css',
 })
 export class LoadingSpinnerComponent {
-
+  size = input<string>('size-12')
 }

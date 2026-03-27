@@ -55,9 +55,8 @@ export class LoginFormComponent {
     // });
     localStorage.setItem(STORED_KEYS.userData, JSON.stringify(response.data.user));
     this.isLoading.set(false);
-    setTimeout(() => {
-      this.router.navigate(['/home']);
-    }, 1000);
+    this.router.navigate(['/home']);
+
   }
 
   afterSubmitError() {

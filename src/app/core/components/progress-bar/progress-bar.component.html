@@ -1,0 +1,11 @@
+<!-- <div
+  [class]="showProgress() ? 'bg-neutral-900/20' : 'hidden'"
+  class="fixed inset-0 z-[999999] flex items-start"
+> -->
+<div
+  id="bar"
+  [class.show-progress]="showProgress()"
+  [class.hide-progress]="!showProgress()"
+  class="w-0 z-99999 fixed opacity-0 bg-main-500 top-0 left-0 h-1 animate-pulse duration-1000 shadow-[0_0_15px_#eab308]"
+></div>
+<!-- </div> -->
