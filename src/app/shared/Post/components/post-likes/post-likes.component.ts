@@ -6,6 +6,7 @@ import { PostService } from '../../services/post.service';
 import { IGetLikesResponse, Like } from '../../interface/IGetLikesResponse';
 import { LoadingSpinnerComponent } from "../../../Components/loading-spinner/loading-spinner.component";
 import { ListSkeletonComponent } from "../../../Components/list-skeleton/list-skeleton.component";
+import { UserService } from '../../../../core/services/user.service';
 
 @Component({
   selector: 'app-post-likes',
@@ -18,11 +19,13 @@ export class PostLikesComponent {
   // inject services
   readonly modalService = inject(ModalService);
   private readonly postService = inject(PostService);
+  readonly userService = inject(UserService);
 
   listen = effect(() => {
     if (this.modalService.showDialog()) {
       console.log("effect show");
       untracked(() => {
+        console.log(this.userService.following());
         this.getLikes(this.modalService.postId()!);
       })
     } else {
@@ -36,6 +39,7 @@ export class PostLikesComponent {
   likes = signal<Like[]>([]);
   totalLikesCount = signal<number>(0);
   isLoading = signal<boolean>(false);
+
 
 
   getLikes(id: string) {

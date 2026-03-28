@@ -49,17 +49,19 @@
       >
         <i
           (click)="toggleLike()"
-          [class.pi-heart-fill]="post()?.isLiked"
-          [class.text-main-500]="post()?.isLiked"
-          [class.pi-heart]="!post()?.isLiked"
-          class="pi text-xl group-hover:scale-110 transition-transform"
+          [class.pi-heart-fill]="isLiked()"
+          [class.text-main-500]="isLiked()"
+          [class.pi-heart]="!isLiked()"
+          class="pi text-xl transition-all duration-500 ease-out group-hover:scale-120  active:scale-200"
         ></i>
-        <span class="text-xs font-bold">{{ post()?.likesCount }}</span>
+
+        <span class="text-xs font-bold">{{ likesCount() }}</span>
+
         <span
-          (click)="openModal(post()!._id)"
+          (click)="openModal(post()._id)"
           class="text-xs ps-0 ms-0 font-bold hover:text-main-300 hover:underline duration-300"
         >
-          {{ post()?.likesCount | i18nPlural: { '=1': 'love', '=0': '', other: 'loves' } }}
+          {{ likesCount() | i18nPlural: { '=1': 'love', '=0': '', other: 'loves' } }}
         </span>
       </button>
 

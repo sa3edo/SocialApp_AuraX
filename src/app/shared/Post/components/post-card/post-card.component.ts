@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, output, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, OnInit, output, signal } from '@angular/core';
 import { Post } from '../../interface/IAllPostsResponse';
 import { DatePipe, I18nPluralPipe } from '@angular/common';
 import { ModalService } from '../../../../core/services/modal.service';
@@ -11,57 +11,53 @@ import { ILikeResponse } from '../../interface/ILikeResponse';
   templateUrl: './post-card.component.html',
   styleUrl: './post-card.component.css',
 })
-export class PostCardComponent {
-  post = input<Post>();
+export class PostCardComponent implements OnInit {
+  post = input.required<Post>();
 
-  userData = JSON.parse(localStorage.getItem('userData') || "{}");
-  userId = this.userData._id;
 
   // inject services
   private modalService = inject(ModalService);
   private postService = inject(PostService);
 
-  // isLiked = computed(() => {
-  //   const currentPost = this.post();
-  //   if (!currentPost) return false;
-  //   console.log("isLiked Computed");
-  //   return currentPost.likes?.includes(this.userId);
-  // });
+  // Local Signals
+  isLiked = signal<boolean>(false);
+  likesCount = signal<number>(0);
+  commentsCount = signal<number>(0);
+  sharesCount = signal<number>(0);
 
+  // user data
+  userData = JSON.parse(localStorage.getItem('userData') || "{}");
+  userId = this.userData._id;
+
+  ngOnInit(): void {
+    this.isPostLiked();
+  }
   openModal(id: string) {
     console.log("openn");
     this.modalService.handleShowDialog(id);
   }
-
-  toggleLike() {
+  isPostLiked(): void {
     const currentPost = this.post();
-    if (!currentPost) return;
-    console.log(this.userId);
-    console.log("likeeee");
-    this.postService.toggleLikePost(currentPost._id).subscribe({
+    this.isLiked.set(currentPost.likes?.includes(this.userId) || false);
+    this.likesCount.set(currentPost.likesCount || 0);
+  };
+  toggleLike() {
+
+    const currentlyLiked = this.isLiked();
+
+    this.isLiked.set(!currentlyLiked);
+    this.likesCount.update(count => currentlyLiked ? count - 1 : count + 1);
+
+    this.postService.toggleLikePost(this.post()._id).subscribe({
       next: (response: ILikeResponse) => {
-        const isLikedFromAPI = response.data.liked
-        if (isLikedFromAPI) {
-          currentPost.likesCount++;
-          currentPost.likes?.push(this.userId);
-          currentPost.isLiked = true;
-
-        }
-        else {
-          const index = currentPost.likes?.indexOf(this.userId);
-          if (index !== -1) {
-            currentPost.likes?.splice(index, 1);
-            currentPost.likesCount--;
-            currentPost.isLiked = false;
-          }
-
-        }
-
       },
       error: (error) => {
-        console.log(error);
+        console.error('Error toggling like', error);
+
+        this.isLiked.set(currentlyLiked);
+        this.likesCount.update(count => currentlyLiked ? count + 1 : count - 1);
       }
-    })
+    });
   }
 
 }

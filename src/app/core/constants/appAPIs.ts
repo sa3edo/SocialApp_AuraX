@@ -10,11 +10,14 @@ export const appAPIs = {
     // User
     followSuggestions: `${environment.baseUrl}/users/suggestions?limit=5`,
     getUserPosts: (userId: string) => `${environment.baseUrl}/users/${userId}/posts`,
-
+    getMyProfile: `${environment.baseUrl}/users/profile-data`,
 
     // Posts
     getAllPosts: `${environment.baseUrl}/posts`,
     createPost: `${environment.baseUrl}/posts`,
     getPostLikes: (postId: string) => `${environment.baseUrl}/posts/${postId}/likes`,
     toggleLikePost: (postId: string) => `${environment.baseUrl}/posts/${postId}/like`,
+
+
+
 }

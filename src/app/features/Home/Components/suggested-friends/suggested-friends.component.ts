@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { IFollowSugResponse, Suggestion } from '../../../../core/interfaces/IFollowSugResponse';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FollowSuggestionsService } from './follow-suggestions.service';
+import { UserService } from '../../../../core/services/user.service';
 
 @Component({
   selector: 'app-suggested-friends',
@@ -13,6 +14,7 @@ export class SuggestedFriendsComponent implements OnInit {
 
   // Inject Services
   private readonly followSuggestionsService = inject(FollowSuggestionsService);
+  private readonly userService = inject(UserService);
   // Signals
   public suggestions = signal<Suggestion[]>([]);
 
@@ -37,7 +39,7 @@ export class SuggestedFriendsComponent implements OnInit {
       },
     });
   }
-
+  
   getBorderColor(index: number): string {
     return this.bordersColors[index % this.bordersColors.length];
   }
