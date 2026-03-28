@@ -48,10 +48,10 @@
         class="flex items-center gap-1 cursor-pointer text-neutral-500 hover:text-main-500 transition-colors group"
       >
         <i
-          (click)="handleLike(post()!._id)"
-          [class.pi-heart-fill]="isLiked()"
-          [class.text-main-500]="isLiked()"
-          [class.pi-heart]="!isLiked()"
+          (click)="toggleLike()"
+          [class.pi-heart-fill]="post()?.isLiked"
+          [class.text-main-500]="post()?.isLiked"
+          [class.pi-heart]="!post()?.isLiked"
           class="pi text-xl group-hover:scale-110 transition-transform"
         ></i>
         <span class="text-xs font-bold">{{ post()?.likesCount }}</span>

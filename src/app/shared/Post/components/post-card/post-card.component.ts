@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, output } from '@angular/core';
+import { Component, computed, effect, inject, input, output, signal } from '@angular/core';
 import { Post } from '../../interface/IAllPostsResponse';
 import { DatePipe, I18nPluralPipe } from '@angular/common';
 import { ModalService } from '../../../../core/services/modal.service';
@@ -16,25 +16,50 @@ export class PostCardComponent {
 
   userData = JSON.parse(localStorage.getItem('userData') || "{}");
   userId = this.userData._id;
+
   // inject services
   private modalService = inject(ModalService);
   private postService = inject(PostService);
 
-  isLiked = computed(() => this.post()?.likes?.includes(this.userId));
+  // isLiked = computed(() => {
+  //   const currentPost = this.post();
+  //   if (!currentPost) return false;
+  //   console.log("isLiked Computed");
+  //   return currentPost.likes?.includes(this.userId);
+  // });
 
   openModal(id: string) {
     console.log("openn");
     this.modalService.handleShowDialog(id);
   }
 
-  handleLike(id: string) {
+  toggleLike() {
+    const currentPost = this.post();
+    if (!currentPost) return;
     console.log(this.userId);
     console.log("likeeee");
-    this.postService.toggleLikePost(id).subscribe({
+    this.postService.toggleLikePost(currentPost._id).subscribe({
       next: (response: ILikeResponse) => {
-        this.postService.likePost.set(response.data.likesCount);
-        this.postService.likedId.set(id);
+        const isLikedFromAPI = response.data.liked
+        if (isLikedFromAPI) {
+          currentPost.likesCount++;
+          currentPost.likes?.push(this.userId);
+          currentPost.isLiked = true;
 
+        }
+        else {
+          const index = currentPost.likes?.indexOf(this.userId);
+          if (index !== -1) {
+            currentPost.likes?.splice(index, 1);
+            currentPost.likesCount--;
+            currentPost.isLiked = false;
+          }
+
+        }
+
+      },
+      error: (error) => {
+        console.log(error);
       }
     })
   }

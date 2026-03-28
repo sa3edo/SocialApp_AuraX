@@ -18,6 +18,7 @@ export interface Post {
 	topComment?: any;
 	sharesCount: number;
 	likesCount: number;
+	isLiked?: boolean;
 	isShare: boolean;
 	id: string;
 	bookmarked: boolean;
