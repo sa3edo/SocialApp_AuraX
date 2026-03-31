@@ -1,59 +1,42 @@
-# SocialApp
+# 📱 AuraX - Social Media Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.11.
+**AuraX** is a dynamic, high-performance social networking platform built with **Angular**. It focuses on seamless user experience, modern UI patterns, and robust state management.
 
-## Development server
+> **Note:** This project is currently under active development 🚧 (Work in Progress).
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🚀 Repository Link
+[https://github.com/sa3edo/SocialApp_AuraX](https://github.com/sa3edo/SocialApp_AuraX)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## ✨ Key Features
+- **Secure Authentication:** JWT-based Login and Signup flow.
+- **Dynamic Newsfeed:** Real-time data fetching for user posts and updates.
+- **Interactive Elements:** Full support for likes, comments, and post interactions.
+- **User Profiles:** Personalized profiles showing user activity and information.
+- **Advanced Filtering:** Search functionality powered by **RxJS** operators.
+- **Modern UI:** Fully responsive design using **Tailwind CSS** and **Sass**.
 
-## Code scaffolding
+## 🛠️ Tech Stack
+- **Framework:** Angular 17+
+- **Styling:** Tailwind CSS, Sass (SCSS)
+- **State Management:** RxJS (Observables/Subjects)
+- **Architecture:** Component-based architecture with Modular design.
+- **HTTP Client:** Integrated with RESTful APIs using Angular HttpClient.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🏗️ Technical Implementation
+- **Guards & Interceptors:** Secure route protection and automated token handling.
+- **Lazy Loading:** Optimized initial load time by splitting feature modules.
+- **Clean Code:** Following **SOLID principles** for maintainable and scalable code.
+- **Form Handling:** Heavy use of **Reactive Forms** for complex data validation.
 
-```bash
-ng generate component component-name
-```
+## 🔜 Upcoming Features (Roadmap)
+- [ ] Direct Messaging (Chat System).
+- [ ] Image/Media Upload integration.
+- [ ] Push Notifications.
+- [ ] Dark Mode Support.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## ⚙️ Installation & Setup
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/sa3edo/SocialApp_AuraX.git](https://github.com/sa3edo/SocialApp_AuraX.git)
