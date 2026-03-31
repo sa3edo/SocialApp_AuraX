@@ -31,8 +31,8 @@
 - **Form Handling:** Heavy use of **Reactive Forms** for complex data validation.
 
 ## 🔜 Upcoming Features (Roadmap)
-- [ ] Direct Messaging (Chat System).
-- [ ] Image/Media Upload integration.
+- [ ] Share Posts
+- [ ] Add Comment
 - [ ] Push Notifications.
 - [ ] Dark Mode Support.
 
